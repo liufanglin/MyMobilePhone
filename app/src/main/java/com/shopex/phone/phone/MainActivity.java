@@ -21,6 +21,7 @@ import com.shopex.phone.phone.activity.AccountSettingActivity;
 import com.shopex.phone.phone.activity.AllAppActivity;
 import com.shopex.phone.phone.activity.InterceptionActivity;
 import com.shopex.phone.phone.activity.LostPhoneActivity;
+import com.shopex.phone.phone.activity.TrafficActivity;
 import com.shopex.phone.phone.common.BaseActivity;
 import com.shopex.phone.phone.library.constants.AppConstants;
 import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
@@ -53,6 +54,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //手机防盗功能
                 if (position == 0) {
                     if (PreferencesUtils.getString(MainActivity.this, "phonepwd", null) == null) {
                         Intent intent = new Intent(MainActivity.this, LostPhoneActivity.class);
@@ -83,13 +85,18 @@ public class MainActivity extends BaseActivity {
                         dialog.show();
 
                     }
-
                 }
-                if (position == 2) {
+                //骚扰拦截
+                if (position ==2) {
+                    Intent intent = new Intent(MainActivity.this, TrafficActivity.class);
+                    startActivity(intent);
+                }
+               /* if (position == 2) {
                     Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(MainActivity.this, InterceptionActivity.class);
                     startActivity(intent);
-                }
+                }*/
+                //本机所有的app
                 if (position == 4) {
                     Intent intent = new Intent(MainActivity.this, AllAppActivity.class);
                     startActivity(intent);

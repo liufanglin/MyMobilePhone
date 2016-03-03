@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Phone.iml" filepath="$PROJECT_DIR$/Phone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyMobilePhone.iml" filepath="$PROJECT_DIR$/MyMobilePhone.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dbgenerator/dbgenerator.iml" filepath="$PROJECT_DIR$/dbgenerator/dbgenerator.iml" />
     </modules>

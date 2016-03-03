@@ -68,6 +68,10 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity android:name=".activity.TrafficActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
 
 
         //短信拦截服务

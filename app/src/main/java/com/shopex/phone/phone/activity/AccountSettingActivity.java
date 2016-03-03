@@ -8,7 +8,7 @@ import com.shopex.phone.phone.common.BaseActivity;
 
 /**
  * Created by samsung on 2016/2/18.
- * 设置界面，关于账号的
+ * 设置界面，关于账号的我随便写什么
  */
 public class AccountSettingActivity extends BaseActivity {
     @Override

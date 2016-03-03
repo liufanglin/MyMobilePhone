@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shopex.phone.phone">
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_WAP_PUSH" />
+    <uses-permission android:name="android.permission.RECEIVE_MMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <permission android:name="android.permission.DELETE_PACKAGES" />
+
+    <application
+        android:name=".common.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".common.RootActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.GuidePageActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.InterceptionActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.SettingsActivtiy"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.AddBlankListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.InputPhoneActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.LocalPhoneActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.AllAppActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.LostPhoneActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.EditActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.AccountSettingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+
+        //短信拦截服务
+        <receiver android:name=".receiver.SmsReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        //监听开机时候状态
+        <receiver android:name=".receiver.OpenPhoneReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />"
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

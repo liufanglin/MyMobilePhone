@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Phone</string>
+    <string name="btn_start">开始体验</string>
+    <string name="localapp">本地应用</string>
+    <string name="systemapp">系统应用</string>
+</resources>

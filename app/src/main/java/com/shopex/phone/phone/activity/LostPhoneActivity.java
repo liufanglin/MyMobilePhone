@@ -25,6 +25,7 @@ public class LostPhoneActivity extends BaseActivity{
     private LinearLayout resetPwdLinear;
     private TextView isOnText;
     private TextView isUnBindText;
+    private LinearLayout aboutLinear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class LostPhoneActivity extends BaseActivity{
         settingPwdLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              startIntent("phonepwd");
+                startIntent("phonepwd");
             }
         });
         bindSimLinear.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +65,7 @@ public class LostPhoneActivity extends BaseActivity{
         unBindSimLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PreferencesUtils.setBoolean(LostPhoneActivity.this,"isbindsim",false);
+                PreferencesUtils.setBoolean(LostPhoneActivity.this, "isbindsim", false);
                 isOnText.setText("请开启sim卡绑定");
                 isUnBindText.setText("未绑定");
             }
@@ -75,6 +76,14 @@ public class LostPhoneActivity extends BaseActivity{
                 startIntent("phonepwd");
             }
         });
+        aboutLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(LostPhoneActivity.this,LostAboutActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
     public void startIntent(String type){
@@ -93,6 +102,7 @@ public class LostPhoneActivity extends BaseActivity{
         resetPwdLinear= (LinearLayout) findViewById(R.id.line_restpwd);
         isOnText= (TextView) findViewById(R.id.tv_ison);
         isUnBindText= (TextView) findViewById(R.id.tv_isunbind);
+        aboutLinear= (LinearLayout) findViewById(R.id.line_about);
 
     }
 }

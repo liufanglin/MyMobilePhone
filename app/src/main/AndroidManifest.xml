@@ -71,6 +71,12 @@
         <activity android:name=".activity.TrafficActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activity.LostAboutActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.MemaryActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
 
 

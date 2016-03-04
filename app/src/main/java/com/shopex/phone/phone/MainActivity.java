@@ -21,6 +21,7 @@ import com.shopex.phone.phone.activity.AccountSettingActivity;
 import com.shopex.phone.phone.activity.AllAppActivity;
 import com.shopex.phone.phone.activity.InterceptionActivity;
 import com.shopex.phone.phone.activity.LostPhoneActivity;
+import com.shopex.phone.phone.activity.MemaryActivity;
 import com.shopex.phone.phone.activity.TrafficActivity;
 import com.shopex.phone.phone.common.BaseActivity;
 import com.shopex.phone.phone.library.constants.AppConstants;
@@ -96,10 +97,19 @@ public class MainActivity extends BaseActivity {
                     Intent intent = new Intent(MainActivity.this, InterceptionActivity.class);
                     startActivity(intent);
                 }*/
+                //内存管理
+                if (position ==3){
+                    Intent intent =new Intent(MainActivity.this, MemaryActivity.class);
+                    startActivity(intent);
+                }
                 //本机所有的app
                 if (position == 4) {
                     Intent intent = new Intent(MainActivity.this, AllAppActivity.class);
                     startActivity(intent);
+
+                }
+                //备份
+                if(position==5){
 
                 }
             }

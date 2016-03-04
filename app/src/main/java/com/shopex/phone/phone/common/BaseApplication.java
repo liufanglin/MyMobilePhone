@@ -44,6 +44,7 @@ public class BaseApplication extends Application{
     public static void initdb(){
         helper=new MyDateBaseHelper(instance, AppConstants.DB_NAME_CONTRACT,null,1);
         db=helper.getReadableDatabase();
+
         smsHelper=new MyDateBaseHelper(instance,AppConstants.DB_NAME_SMS,null,1);
         smsDb=smsHelper.getReadableDatabase();
 

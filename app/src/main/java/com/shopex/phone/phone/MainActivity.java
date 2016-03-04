@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.shopex.phone.phone.activity.AccountSettingActivity;
 import com.shopex.phone.phone.activity.AllAppActivity;
+import com.shopex.phone.phone.activity.BackupsActivity;
 import com.shopex.phone.phone.activity.InterceptionActivity;
 import com.shopex.phone.phone.activity.LostPhoneActivity;
 import com.shopex.phone.phone.activity.MemaryActivity;
@@ -110,7 +111,8 @@ public class MainActivity extends BaseActivity {
                 }
                 //备份
                 if(position==5){
-
+                    Intent intent =new Intent(MainActivity.this, BackupsActivity.class);
+                    startActivity(intent);
                 }
             }
         });

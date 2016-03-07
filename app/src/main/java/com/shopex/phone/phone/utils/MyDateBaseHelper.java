@@ -16,8 +16,11 @@ public class MyDateBaseHelper extends SQLiteOpenHelper{
         super(context, name, factory, version);
     }
     //所有表的建表语句
-    private String sql="create table contract_info(_id integer primary key autoincrement,name,phone)";
-    private String smssql="create table sms_info(_id integer primary key autoincrement,name,phone,content,time)";
+    //联系人  如果是黑名单中的type=1 所有备份的type=0；
+    private String sql="create table contract_info(_id integer primary key autoincrement,name,phone,type)";
+    //所有短信  如果是黑名单的type =1  所有备份的type=0；
+    private String smssql="create table sms_info(_id integer primary key autoincrement,name,phone,content,time,type)";
+
     //构造器创建数据
     @Override
     public void onCreate(SQLiteDatabase db) {

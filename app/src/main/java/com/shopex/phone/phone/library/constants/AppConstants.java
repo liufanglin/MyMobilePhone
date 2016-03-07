@@ -37,5 +37,8 @@ public class AppConstants {
     public static final String DB_NAME="name.db";
     public static final String TABLE_SMS="sms_info";
 
+    //聚合数据appkey
+    public static final String PhoneAPPKEY="1c437a472475395778ecdbd549defdb3";
+
 
 }

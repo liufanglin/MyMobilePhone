@@ -56,7 +56,7 @@ public class InterEmsFramgent extends BaseFragment {
  */
     public List<Sms> selectSms(){
         List<Sms> lists=new ArrayList<>();
-        Cursor cursor= BaseApplication.smsDb.query(AppConstants.TABLE_SMS,new String[]{"phone","content","time"}, null, null, null, null, null) ;
+        Cursor cursor= BaseApplication.smsDb.query(AppConstants.TABLE_SMS,new String[]{"phone","content","time",}, null, null, null, null, null) ;
         while(cursor.moveToNext()){
             Sms sms=new Sms();
             String phone=cursor.getString(0);

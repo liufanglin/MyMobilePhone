@@ -1,26 +1,28 @@
 package com.shopex.phone.phone;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.shopex.phone.phone.activity.AccountSettingActivity;
 import com.shopex.phone.phone.activity.AllAppActivity;
 import com.shopex.phone.phone.activity.BackupsActivity;
-import com.shopex.phone.phone.activity.InterceptionActivity;
 import com.shopex.phone.phone.activity.LostPhoneActivity;
 import com.shopex.phone.phone.activity.MemaryActivity;
 import com.shopex.phone.phone.activity.TrafficActivity;
@@ -31,26 +33,79 @@ import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
 public class MainActivity extends BaseActivity {
     private GridView gridView;
     private EditText putInPwdEdit;
+    private DrawerLayout drawerLayout;
+    private LayoutInflater inflater=null;
+    private View drawerView;
+    private FrameLayout content;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_slide);
+        content= (FrameLayout) findViewById(R.id.contentfragment);
+        inflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        drawerView=inflater.inflate(R.layout.activity_main,null);
         setLeftBackImageText("手机助手", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        setRightImage(R.mipmap.cc, new View.OnClickListener() {
+        if (AppConstants.isLogin){
+            setRightImage(R.mipmap.ccc, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            });
+        }else {
+            setRightImage(R.mipmap.cc, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            });
+        }
+
+
+        gridView= (GridView)drawerView.findViewById(R.id.gridview);
+        content.addView(drawerView);
+        //侧滑
+        drawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
-            public void onClick(View v) {
+            public void onDrawerSlide(View drawerView, float slideOffset) {
 
             }
-        });
 
-        gridView= (GridView) findViewById(R.id.gridview);
+            @Override
+            public void onDrawerOpened(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                switch (newState) {
+                    case DrawerLayout.STATE_DRAGGING://拖动状态
+                        Log.i("tag", "------拖动状态----");
+                        break;
+                    case DrawerLayout.STATE_IDLE://静止状态
+                        Log.i("tag", "------静止状态----");
+                        break;
+                    case DrawerLayout.STATE_SETTLING://选中状态
+                        Log.i("tag", "------选中状态----");
+                        break;
+                }
+            }
+        });
+     //   mDrawerToggle=new ActionBarDrawerToggle(this,mDrawerToggle,);
         gridView.setAdapter(new MyBaseAdapter());
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

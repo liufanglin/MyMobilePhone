@@ -23,7 +23,7 @@ public class SplashActivity extends RootActivity{
             super.handleMessage(msg);
             if (msg.what==0){
                 if (PreferencesUtils.getBoolean(SplashActivity.this,ISFIRSTOPEN)){
-                    Intent intent=new Intent(SplashActivity.this, MainActivity.class);
+                    Intent intent=new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }else {

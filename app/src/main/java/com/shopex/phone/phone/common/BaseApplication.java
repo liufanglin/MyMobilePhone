@@ -26,6 +26,10 @@ public class BaseApplication extends Application{
     public static MyDateBaseHelper smsHelper=null;
     public static SQLiteDatabase smsDb=null;
 
+    //用户信息
+    public static MyDateBaseHelper userHelper=null;
+    public static SQLiteDatabase usersDb=null;
+
 
 
     @Override
@@ -47,6 +51,11 @@ public class BaseApplication extends Application{
 
         smsHelper=new MyDateBaseHelper(instance,AppConstants.DB_NAME_SMS,null,1);
         smsDb=smsHelper.getReadableDatabase();
+
+        userHelper=new MyDateBaseHelper(instance,AppConstants.DB_NAME_USER,null,1);
+        usersDb=smsHelper.getReadableDatabase();
+
+
 
     }
 

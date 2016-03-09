@@ -156,7 +156,7 @@ public class BackupsActivity extends BaseActivity {
                             JSONObject all=object.getJSONObject("result");
                             String province=all.getString("province");
                             String city=all.getString("city");
-                            String company=all.getString("compan");
+                            String company=all.getString("company");
                             String card=all.getString("card");
                             address=province+city+company+card;
                         }else {

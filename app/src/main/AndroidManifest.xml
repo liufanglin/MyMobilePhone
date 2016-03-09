@@ -80,6 +80,11 @@
         <activity android:name=".activity.BackupsActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".activity.RegistActivity"
+            android:screenOrientation="portrait"></activity>
 
 
 

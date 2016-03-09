@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FB"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:id="@+id/account_regist_step1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:orientation="vertical"
+        android:paddingTop="10dp" >
+
+         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_enter_view" >
+            
+            <Button
+                android:id="@+id/account_regist_get_verify_code_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="75dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/bg_verify_code_red"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:layout_marginRight="5dp"
+                android:text="获取验证码"
+                android:textColor="#ffffff"
+                />
+
+            <EditText
+                android:id="@+id/account_regist_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/account_regist_get_verify_code_button"
+                android:background="@null"
+                android:drawableLeft="@mipmap/login_user"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+            <EditText
+                android:id="@+id/account_regist_verify_code"
+                style="@style/account_regist_edittext"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"
+                android:background="@drawable/bg_enter_view"
+                android:drawableLeft="@mipmap/register_msg"
+                android:drawablePadding="10dp"
+                android:hint="请输入验证码" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_enter_view" >
+
+            <CheckBox
+                android:id="@+id/account_register_password_visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/btn_check_off_holo_light"
+                android:checked="true"
+                android:paddingBottom="15dp"
+                android:paddingRight="10dp"
+                android:paddingTop="15dp" />
+
+            <EditText
+                android:id="@+id/account_regist_passwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/account_register_password_visible"
+                android:background="@null"
+                android:drawableLeft="@mipmap/login_password"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:padding="15dp"
+                android:singleLine="true"
+                android:textColor="#666666"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/account_regist_next_button"
+            style="@style/button_pink"
+            android:layout_width="match_parent"
+            android:layout_height="46dip"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/login_register"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:textSize="18dp"
+            android:text="注册" />
+
+    </LinearLayout>
+    
+  <!--  <LinearLayout
+        android:id="@+id/account_regist_step2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="注册成功"
+            android:textColor="#666666"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/account_regist_uname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/account_login_name_bgimage"
+            android:gravity="center_vertical"
+            android:hint="用户名"
+            android:singleLine="true"
+            android:textColor="@color/account_login_primary_textcolor"
+            android:textSize="@dimen/TextSizeMedium" />
+
+        <EditText
+            android:id="@+id/account_regist_passwd2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/account_regist_passwd_input_bgimage"
+            android:gravity="center_vertical"
+            android:hint="@string/account_regist_passwd_hint"
+            android:singleLine="true"
+            android:textColor="@color/account_login_primary_textcolor"
+            android:textSize="@dimen/TextSizeMedium" />
+
+        <EditText
+            android:id="@+id/account_regist_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/account_regist_email_input_bgimage"
+            android:gravity="center_vertical"
+            android:hint="@string/account_regist_email"
+            android:singleLine="true"
+            android:textColor="@color/account_login_primary_textcolor"
+            android:textSize="@dimen/TextSizeMedium" />
+
+        <Button
+            android:id="@+id/account_regist_submit_button"
+            style="@style/button_pink"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="@dimen/PaddingXXLarge"
+            android:text="@string/complete" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/account_regist_step0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/PaddingLarge"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/PaddingMedium"
+            android:paddingTop="@dimen/PaddingMedium"
+            android:text="@string/account_regist_offline_member"
+            android:textColor="@color/westore_dark_textcolor"
+            android:textSize="@dimen/TextSizeMedium" />
+
+        <EditText
+            android:id="@+id/account_regist_offline_passwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/account_login_input_text"
+            android:gravity="center_vertical"
+            android:hint="@string/account_regist_passwd_hint"
+            android:paddingLeft="@dimen/PaddingLarge"
+            android:paddingRight="@dimen/PaddingLarge"
+            android:singleLine="true"
+            android:textColor="@color/account_login_primary_textcolor"
+            android:textSize="@dimen/TextSizeMedium" />
+
+        <Button
+            android:id="@+id/account_regist_offline_submit"
+            style="@style/button_pink"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="@dimen/PaddingXXLarge"
+            android:text="@string/account_login_submit" />
+    </LinearLayout>
+-->
+</RelativeLayout>

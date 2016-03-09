@@ -8,6 +8,7 @@ import com.shopex.phone.phone.R;
  *
  */
 public class AppConstants {
+    public static boolean isLogin=false;
     public static String TAG="liufanglin-----------";
     public static String PREFERENCE_NAME="phone";
     public static boolean DEBUG=true;//项目是否是调试
@@ -23,7 +24,7 @@ public class AppConstants {
     public static final int[] MAIN_IMAGE=new int[]{R.mipmap.ck,R.mipmap.ck,R.mipmap.ck,R.mipmap.ck,
             R.mipmap.ck,R.mipmap.ck};
     public static final String[] MAIN_TEXTTITLE=new String[]{"手机防盗","流量监控"
-    ,"骚扰拦截","支付保镖","软件管理","手机杀毒"};
+    ,"骚扰拦截","支付保镖","软件管理","其他功能"};
     public static final String[] MAIN_TEXT=new String[]{
             "剩余存储空间85%","看流量去哪了","骚扰拦截","获取10万赔付金","1款软件可以优化","三重引擎防护中"
     };
@@ -31,11 +32,14 @@ public class AppConstants {
     public static final String DB_NAME_CONTRACT = "contract.db";
     //短信数据库
     public static final String DB_NAME_SMS="sms.db";
+    //用户数据库
+    public static final String DB_NAME_USER="user.db";
 
     //表名
     public static final String TABLE="contract_info";
     public static final String DB_NAME="name.db";
     public static final String TABLE_SMS="sms_info";
+    public static final String TABLE_USER="user_info";
 
     //聚合数据appkey
     public static final String PhoneAPPKEY="1c437a472475395778ecdbd549defdb3";

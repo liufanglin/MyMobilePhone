@@ -15,9 +15,11 @@ public class AppConstants {
     //骚扰拦截里面设置viewpager的标题
     public static String title[]=new String[]{"短信拦截","来电显示"};
 
+    public static int SPLASH=R.mipmap.splash;
+
     //设置引导页的图片
     public static final int [] GUIDE_PAGE=new int[]{
-        R.mipmap.d51,R.mipmap.d52,R.mipmap.d53};
+        R.mipmap.guide1,R.mipmap.guide2,R.mipmap.guide3};
     public static final int [] GUIDE_PAGE_POTION=new int[]{
             R.mipmap.point_default,R.mipmap.poing_active};
     //首页gridview的文字和图片
@@ -43,6 +45,9 @@ public class AppConstants {
 
     //聚合数据appkey
     public static final String PhoneAPPKEY="1c437a472475395778ecdbd549defdb3";
+
+    //用户名
+    public static String name;
 
 
 }

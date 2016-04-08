@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.ImageView;
 
 import com.shopex.phone.phone.MainActivity;
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.common.RootActivity;
+import com.shopex.phone.phone.library.constants.AppConstants;
 import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
 
 
@@ -17,6 +19,7 @@ import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
  */
 public class SplashActivity extends RootActivity{
     public static String ISFIRSTOPEN="isFirstOpen";
+    private ImageView splashImage;
     private Handler handler=new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -39,7 +42,10 @@ public class SplashActivity extends RootActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        splashImage= (ImageView) findViewById(R.id.iv_splash);
+        splashImage.setImageResource(AppConstants.SPLASH);
         handler.sendEmptyMessageDelayed(0,3000);
+
 
     }
 }

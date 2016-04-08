@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivity {
                         Log.i("tag", "------拖动状态----");
                         break;
                     case DrawerLayout.STATE_IDLE://静止状态
-                        Log.i("tag", "------静止状态----");
+                        Log.i("tag", "------静止状态----") ;
                         break;
                     case DrawerLayout.STATE_SETTLING://选中状态
                         Log.i("tag", "------选中状态----");
@@ -143,6 +143,10 @@ public class MainActivity extends BaseActivity {
 
                     }
                 }
+
+
+
+
                 //骚扰拦截
                 if (position ==2) {
                     Intent intent = new Intent(MainActivity.this, TrafficActivity.class);

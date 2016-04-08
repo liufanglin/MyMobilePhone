@@ -7,4 +7,6 @@
     <dimen name="custom_indicator_width">50dp</dimen>
     <dimen name="default_page_margin">20dp</dimen>
     <dimen name="default_customer_offset">100dp</dimen>
+
+
 </resources>

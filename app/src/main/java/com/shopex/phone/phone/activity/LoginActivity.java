@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,23 +33,7 @@ public class LoginActivity extends BaseActivity {
     private EditText psw = null;
     private TextView forgotPwd = null;
     private ProgressDialog mDialog = null;
-/*
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
 
-            if (msg.what == 1) {
-                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-            }
-
-            if (msg.what == 2) {
-                Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
-            }
-
-
-        }
-    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +45,8 @@ public class LoginActivity extends BaseActivity {
                 finish();
             }
         });
+        ProgressBar progressBar=new ProgressBar(this);
+        progressBar.setVisibility(View.VISIBLE);
         initView();
 
     }
@@ -89,6 +76,7 @@ public class LoginActivity extends BaseActivity {
                         if (name.equals(accountStr)){
                             if (phone.equals(pwdStr)){
                                 T.showShort(LoginActivity.this, "登录成功");
+                                AppConstants.name=name;
                                 AppConstants.isLogin=true;
                                 finish();
                                 Intent intent=new Intent(LoginActivity.this, MainActivity.class);

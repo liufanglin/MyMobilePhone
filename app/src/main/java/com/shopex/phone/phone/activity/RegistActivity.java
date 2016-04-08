@@ -2,6 +2,8 @@ package com.shopex.phone.phone.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.SingleLineTransformationMethod;
@@ -12,12 +14,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.common.BaseActivity;
 import com.shopex.phone.phone.common.BaseApplication;
 import com.shopex.phone.phone.library.toolbox.Run;
 import com.shopex.phone.phone.library.toolbox.T;
+
 
 
 /**
@@ -29,6 +33,19 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
     private Button mGetVerifyCodeButton,mNextButton;
     private EditText mPhoneNumberText, mVerifyCodeText, mPasswdText;
     private CheckBox mVisiblePasswordBox;
+    private Handler mhander =new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what==0){
+                mGetVerifyCodeButton.setText("重新获取");
+                mGetVerifyCodeButton.setEnabled(true);
+            }else {
+                mGetVerifyCodeButton.setEnabled(false);
+                mGetVerifyCodeButton.setText(String.format(getResources().getString(R.string.string_send_retry), msg.what));
+            }
+
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +89,16 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        if(v==mGetVerifyCodeButton){
+            String phoneNumber = mPhoneNumberText.getText().toString();
+            if (!TextUtils.isEmpty(phoneNumber) &&Run.isChinesePhoneNumber(phoneNumber)){
+                new Thread(new MyTime()).start();
+
+            }else {
+                Toast.makeText(RegistActivity.this,"请输入合法的手机号",Toast.LENGTH_LONG).show();
+            }
+
+        }
       if (v == mNextButton) {
             registAccount();
             // showSecondaryStepView();
@@ -100,6 +127,24 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             Intent intent=new Intent(RegistActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
+        }
+    }
+
+    public class MyTime implements Runnable{
+
+        @Override
+        public void run() {
+            int count=60;
+            while(count>=0){
+                try {
+                    mhander.sendEmptyMessage(count);
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                count--;
+            }
+
         }
     }
 

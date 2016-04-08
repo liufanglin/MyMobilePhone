@@ -52,6 +52,8 @@ public class GuidePageActivity extends RootActivity{
             if(i==imgae.length-1) {
                 View view = LayoutInflater.from(GuidePageActivity.this).inflate(R.layout.guide_begin_page, null);
                 Button btn= (Button) view.findViewById(R.id.start_login);
+                ImageView iv_image3= (ImageView) view.findViewById(R.id.iv_image3);
+                iv_image3.setImageResource(imgae[i]);
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -104,7 +106,7 @@ public class GuidePageActivity extends RootActivity{
         //保存打开引导页标记
       //  PreferencesUtils.putBoolean(GuidePageActivity.this,SplashActivity.NOT_FIRST_OPEN,true);
         PreferencesUtils.setBoolean(GuidePageActivity.this,SplashActivity.ISFIRSTOPEN,true);
-        Intent it = new Intent(GuidePageActivity.this, MainActivity.class);
+        Intent it = new Intent(GuidePageActivity.this, LoginActivity.class);
         startActivity(it);
         finish();
 

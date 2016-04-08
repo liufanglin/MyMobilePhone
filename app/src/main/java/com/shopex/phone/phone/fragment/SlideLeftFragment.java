@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.activity.LoginActivity;
+import com.shopex.phone.phone.activity.SlideSettingsActivity;
 
 /**
  * Created by samsung on 2016/3/8.
@@ -34,6 +35,11 @@ public class SlideLeftFragment extends BaseFragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+
+                }
+                if (position == 2) {
+                    Intent intent =new Intent(getActivity(), SlideSettingsActivity.class);
                     startActivity(intent);
                 }
             }

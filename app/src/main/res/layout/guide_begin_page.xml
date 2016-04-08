@@ -4,6 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <ImageView
+           android:id="@+id/iv_image3"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:scaleType="fitXY"/>
     <Button
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -14,7 +22,8 @@
         android:text="@string/btn_start"
         android:textSize="18dp"
         android:textColor="#FF7946"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="400dp"
         />
+   </FrameLayout>
 
 </LinearLayout>

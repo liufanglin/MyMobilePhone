@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +15,13 @@ import android.widget.Toast;
 import com.shopex.phone.phone.MainActivity;
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.bean.Contract;
+import com.shopex.phone.phone.bean.UserInfo;
 import com.shopex.phone.phone.common.BaseActivity;
 import com.shopex.phone.phone.common.BaseApplication;
+import com.shopex.phone.phone.db.User;
 import com.shopex.phone.phone.library.constants.AppConstants;
+import com.shopex.phone.phone.library.db.DbServiceUser;
+import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
 import com.shopex.phone.phone.library.toolbox.T;
 
 import java.util.ArrayList;
@@ -56,6 +58,14 @@ public class LoginActivity extends BaseActivity {
         account = (EditText) findViewById(R.id.account);
         psw = (EditText) findViewById(R.id.psw);
         forgotPwd = (TextView) findViewById(R.id.forgot_pwd);
+        String name=PreferencesUtils.getString(LoginActivity.this,"loginname",null);
+        String password=PreferencesUtils.getString(LoginActivity.this,"loginpwd",null);
+        if (!TextUtils.isEmpty(name)) {
+            account.setText(name);
+        }
+        if (!TextUtils.isEmpty(password)){
+            psw.setText(password);
+        }
 
         loginBtn = (Button) findViewById(R.id.login);
 
@@ -76,14 +86,27 @@ public class LoginActivity extends BaseActivity {
                         if (name.equals(accountStr)){
                             if (phone.equals(pwdStr)){
                                 T.showShort(LoginActivity.this, "登录成功");
+                                PreferencesUtils.setString(LoginActivity.this, "loginname", accountStr);
+                                PreferencesUtils.setString(LoginActivity.this,"loginpwd",pwdStr);
+                                PreferencesUtils.setString(BaseApplication.getInstance(), "loginpwd", null);
                                 AppConstants.name=name;
                                 AppConstants.isLogin=true;
                                 finish();
                                 Intent intent=new Intent(LoginActivity.this, MainActivity.class);
                                 Bundle bundle=new Bundle();
-                                bundle.putString("name",name);
+                                bundle.putString("name", name);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
+                                UserInfo.getInstance().account=accountStr;
+                                UserInfo.getInstance().pwd=pwdStr;
+                                User user=DbServiceUser.getInstance(LoginActivity.this).SelectNote(accountStr);
+                                if (user!=null) {
+                                    UserInfo.getInstance().phone = user.getPhone() == null ? "" : user.getPhone();
+                                    UserInfo.getInstance().photo = user.getPhoto() == null ? "" : user.getPhoto();
+                                    UserInfo.getInstance().nick = user.getNick() == null ? "" : user.getNick();
+                                }
+
+
                             }
                         }
                     }

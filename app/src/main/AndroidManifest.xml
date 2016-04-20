@@ -90,12 +90,16 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.SlideSettingsActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.AccountPersonActivity"
+            android:screenOrientation="portrait"></activity>
+
+
 
         <activity android:name=".activity.TestView">
         </activity>
         <activity android:name=".activity.AnimalActivity">
-
         </activity>
+
 
         //短信拦截服务
         <receiver android:name=".receiver.SmsReceiver">

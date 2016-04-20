@@ -1,10 +1,10 @@
 package com.shopex.phone.phone;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.widget.DrawerLayout;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,6 +29,7 @@ import com.shopex.phone.phone.activity.TrafficActivity;
 import com.shopex.phone.phone.common.BaseActivity;
 import com.shopex.phone.phone.library.constants.AppConstants;
 import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
+import com.shopex.phone.phone.library.view.InputPayPasswordDialog;
 
 public class MainActivity extends BaseActivity {
     private GridView gridView;
@@ -37,6 +38,15 @@ public class MainActivity extends BaseActivity {
     private LayoutInflater inflater=null;
     private View drawerView;
     private FrameLayout content;
+    private Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what==1001){
+                openInputPayPasswordFrame();
+            }
+        }
+    };
 
 
 
@@ -117,7 +127,7 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(MainActivity.this, LostPhoneActivity.class);
                         startActivity(intent);
                     } else {
-                        View contentView=getLayoutInflater().inflate(R.layout.dialog_putin_pwd,null);
+                       /* View contentView=getLayoutInflater().inflate(R.layout.dialog_putin_pwd,null);
                         putInPwdEdit= (EditText) contentView.findViewById(R.id.et_pwd);
                         AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
                         builder.setTitle("请输入密码").setView(contentView)
@@ -140,6 +150,9 @@ public class MainActivity extends BaseActivity {
                         });
                         AlertDialog dialog=builder.create();
                         dialog.show();
+
+*/
+                        openInputPayPasswordFrame();
 
                     }
                 }
@@ -214,6 +227,33 @@ public class MainActivity extends BaseActivity {
             textView.setText(AppConstants.MAIN_TEXT[position]);
             return view;
         }
+    }
+
+
+    // 打开输入支付密码界面
+    private void openInputPayPasswordFrame() {
+        InputPayPasswordDialog.openDialog(MainActivity.this, new InputPayPasswordDialog.OnPayPasswordListener() {
+
+            @Override
+            public void onResult(String payPassword) {
+                // 验证支付密码是否正确
+
+                if (TextUtils.isEmpty(payPassword)){
+                    Toast.makeText(MainActivity.this,"请输入密码",3000).show();
+                }else if(payPassword.equals(PreferencesUtils.getString(MainActivity.this,"phonepwd").trim())){
+                    Intent intent = new Intent(MainActivity.this, LostPhoneActivity.class);
+                    startActivity(intent);
+                }else {
+                    handler.sendEmptyMessageDelayed(1001,1000);
+                    Toast.makeText(MainActivity.this,"验证密码输入错误，请重新输入",3000).show();
+                }
+
+            }
+            @Override
+            public double onPaymentAmount() {
+               return  0.00;
+            }
+        });
     }
 
 

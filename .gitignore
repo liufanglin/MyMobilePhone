@@ -1,5 +1,12 @@
+.idea/
 *.iml
-.gradle
+build/
+app/build/
+dbgenerator/build/
+.DS_Store?
+app/src/main/java-gen
+local.properties
+.gradle/
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries

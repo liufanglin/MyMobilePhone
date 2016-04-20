@@ -81,15 +81,28 @@
 
                 />
 
-            <ImageView
+            <CheckBox
                 android:id="@+id/eyeView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginRight="15dp"
-                android:background="@mipmap/login_hide_icon"
-                android:focusable="false"
+                android:button="@drawable/btn_login"
                 />
+<!--
+
+            <CheckBox
+                android:id="@+id/eyeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:button="@drawable/btn_login"
+                android:checked="true"
+                android:paddingBottom="15dp"
+                android:paddingRight="10dp"
+                android:paddingTop="15dp" />
+-->
 
 
         </FrameLayout>

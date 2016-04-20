@@ -7,8 +7,12 @@ import com.shopex.phone.phone.common.BaseApplication;
 import com.shopex.phone.phone.db.ContactUser;
 import com.shopex.phone.phone.db.ContactUserDao;
 import com.shopex.phone.phone.db.DaoSession;
+import com.shopex.phone.phone.db.User;
+import com.shopex.phone.phone.db.UserDao;
 
 import java.util.List;
+
+import de.greenrobot.dao.query.QueryBuilder;
 
 /**
  * Created by samsung on 2016/1/13.
@@ -20,9 +24,8 @@ public class DbService {
     private DaoSession mDaoSession;
     private ContactUserDao contactUserDao;
 
+    private UserDao userDao;
 
-    private DbService() {
-    }
 
     public static DbService getInstance(Context context) {
         if (instance == null) {
@@ -35,6 +38,36 @@ public class DbService {
         }
         return instance;
     }
+    //插入一个对象
+    public  long insert(ContactUser note){
+        return contactUserDao.insert(note);
+    }
+    //根据用户名查询密码
+    public ContactUser SelectNote(String name){
+        QueryBuilder<ContactUser> qb=contactUserDao.queryBuilder();
+        qb.where(ContactUserDao.Properties.Name.eq(name));
+        if (qb.list().size()>0){
+            return qb.list().get(0);
+        }else {
+            return null;
+        }
+    }
+    //删除某个对象
+    public void deleteNoteItem(ContactUser note){
+        QueryBuilder<ContactUser> qb=contactUserDao.queryBuilder();
+        qb.where(ContactUserDao.Properties.Name.eq(note.getName()));
+        List<ContactUser> list =qb.build().list();
+        contactUserDao.deleteInTx(list);
+    }
+    public void update(ContactUser note){
+        QueryBuilder<ContactUser> qb=contactUserDao.queryBuilder();
+        qb.where(ContactUserDao.Properties.Id.eq(note.getId()));
+        List<ContactUser> list =qb.build().list();
+        contactUserDao.update(note);
+    }
+
+
+
 
 
     public ContactUser loadNote(long id) {

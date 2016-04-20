@@ -19,6 +19,10 @@ import android.widget.Toast;
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.common.BaseActivity;
 import com.shopex.phone.phone.common.BaseApplication;
+import com.shopex.phone.phone.db.ContactUser;
+import com.shopex.phone.phone.db.ContactUserDao;
+import com.shopex.phone.phone.library.db.DbService;
+import com.shopex.phone.phone.library.toolbox.LogUtils;
 import com.shopex.phone.phone.library.toolbox.Run;
 import com.shopex.phone.phone.library.toolbox.T;
 
@@ -124,6 +128,17 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
             T.showShort(RegistActivity.this, "注册成功");
             BaseApplication.usersDb.execSQL("insert into user_info(name,pwd) values(?,?)",
                     new Object[]{phoneNumber, password});
+     //       DbService.getInstance(RegistActivity.this).queryNote(ContactUserDao.Properties.Name.eq("13617005653"),)
+         /*  DbService.getInstance(RegistActivity.this).insert(new ContactUser(System.currentTimeMillis(), "18720984303", "123456"));
+
+           ContactUser logs=DbService.getInstance(RegistActivity.this).SelectNote("18720984303");
+            LogUtils.instance.i(logs.getPhone());
+
+            DbService.getInstance(RegistActivity.this).update(new ContactUser(logs.getId(), "18720984303", "654321"));
+
+            ContactUser lll=DbService.getInstance(RegistActivity.this).SelectNote("18720984303");
+            LogUtils.instance.i(lll.getPhone());*/
+
             Intent intent=new Intent(RegistActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
@@ -153,31 +168,6 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
 
 
-  /*  // 设置验证码按钮状态，倒计时60秒
-    private void enableVreifyCodeButton() {
-        long remainTime = System.currentTimeMillis() - 0;
-        remainTime = 60 - remainTime / 1000;
-        if (remainTime <= 0) {
-            mGetVerifyCodeButton.setEnabled(true);
-            mGetVerifyCodeButton
-                    .setText("获取验证码");
-            mGetVerifyCodeButton.setBackgroundResource(R.drawable.bg_verify_code_red);
-            mGetVerifyCodeButton.setTextColor(Color.WHITE);
-            return;
-        }else{
-            mGetVerifyCodeButton.setBackgroundResource(R.drawable.bg_verify_code);
-            mGetVerifyCodeButton.setTextColor(getResources().getColor(R.color.default_page_bgcolor_3));
-        }
-
-        mGetVerifyCodeButton.setEnabled(false);
-        mGetVerifyCodeButton.setText(remainTime+"秒");
-    *//*    mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                enableVreifyCodeButton();
-            }
-        }, 1000);*//*
-    }*/
 
 
 

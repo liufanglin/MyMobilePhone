@@ -39,7 +39,8 @@ public class AppConstants {
 
     //表名
     public static final String TABLE="contract_info";
-    public static final String DB_NAME="name.db";
+    public static final String DB_NAME="ContactUser";
+    public static final String DB_USER="User";
     public static final String TABLE_SMS="sms_info";
     public static final String TABLE_USER="user_info";
 

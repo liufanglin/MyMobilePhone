@@ -4,6 +4,7 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 
+import com.shopex.phone.phone.bean.UserInfo;
 import com.shopex.phone.phone.db.DaoMaster;
 import com.shopex.phone.phone.db.DaoSession;
 import com.shopex.phone.phone.library.constants.AppConstants;
@@ -19,6 +20,10 @@ public class BaseApplication extends Application{
     private static BaseApplication instance=null;
     public static DaoMaster daoMaster=null;
     public static DaoSession daoSession=null;
+
+//用户表
+    public static DaoMaster daoMasterUser=null;
+    public static DaoSession daoSessionUser=null;
     //联系人数据库
     public static MyDateBaseHelper helper=null;
     public static SQLiteDatabase db = null;
@@ -38,6 +43,11 @@ public class BaseApplication extends Application{
         instance=BaseApplication.this;
         daoMaster= DaoHelp.getDaoMaster(getApplicationContext());
         daoSession=DaoHelp.getDaoSession(getApplicationContext());
+
+        daoMasterUser= DaoHelp.getDaoMasterUser(getApplicationContext());
+        daoSessionUser=DaoHelp.getDaoSessionUser(getApplicationContext());
+        UserInfo.getInstance();
+
         initdb();
 
     }
@@ -54,8 +64,6 @@ public class BaseApplication extends Application{
 
         userHelper=new MyDateBaseHelper(instance,AppConstants.DB_NAME_USER,null,1);
         usersDb=smsHelper.getReadableDatabase();
-
-
 
     }
 

@@ -6,6 +6,7 @@ import java.io.IOException;
 import de.greenrobot.daogenerator.DaoGenerator;
 import de.greenrobot.daogenerator.Entity;
 import de.greenrobot.daogenerator.Schema;
+import sun.misc.UCDecoder;
 
 public class CoreGenerator {
     public static void main(String[] args) throws Exception {
@@ -13,10 +14,11 @@ public class CoreGenerator {
         // 两个参数分别代表：数据库版本号与自动生成代码的包路径。
         Schema schema = new Schema(1, "com.shopex.phone.phone.db");
         addNote(schema);
+       addUser(schema);
         // 最后我们将使用 DAOGenerator 类的 generateAll() 方法自动生成代码，此处你需要根据自己的情况更改输出目录
-        // （既之前创建的 java-gen)。
+        // （既之前创建的 java-gen)。D:\andstudiowork\MyMobilePhone\app\src\main\java-gen
         // 其实，输出目录的路径可以在 build.gradle 中设置，有兴趣的朋友可以自行搜索，这里就不再详解。
-        new DaoGenerator().generateAll(schema,"D:\\andstudiowork\\Phone\\app\\src\\main\\java-gen");
+        new DaoGenerator().generateAll(schema,"D:\\andstudiowork\\MyMobilePhone\\app\\src\\main\\java-gen");
     }
 
     public static void addNote(Schema schema){
@@ -27,6 +29,16 @@ public class CoreGenerator {
         note.addLongProperty("id").primaryKey().autoincrement();
         note.addStringProperty("name");
         note.addStringProperty("phone").notNull();
+    }
+    public static void addUser(Schema schema){
+        Entity user=schema.addEntity("User");
+        user.setTableName("User");
+        user.addLongProperty("id").primaryKey().autoincrement();
+        user.addStringProperty("account");
+        user.addStringProperty("pwd");
+        user.addStringProperty("photo");
+        user.addStringProperty("nick");
+        user.addStringProperty("phone");
     }
 
 }

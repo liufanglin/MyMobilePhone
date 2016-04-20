@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#ffddee"
+        android:background="#ff613c"
 
         >
         <RelativeLayout
@@ -45,13 +44,15 @@
                    android:layout_marginLeft="12dp"
                    android:textColor="#ffffff"/>
            </LinearLayout>
-            <ImageView
+            <com.shopex.phone.phone.library.view.CircleImageView
                 android:id="@+id/right_menu_image"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="13dp"
                 android:visibility="gone"
+                app:civ_border_width="2dp"
+                app:civ_border_color="#ddffcc"
                 android:layout_centerVertical="true"
                 />
             <TextView

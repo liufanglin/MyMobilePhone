@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#F5F5F5"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl_set1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+   >
+        <com.shopex.phone.phone.library.view.CircleImageView
+            android:id="@+id/circle_image"
+            android:layout_width="40dp"
+            android:src="@mipmap/ac"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_height="40dp"/>
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/arrow_right_pink_n"/>
+            <TextView
+                android:text="修改头像"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textSize="14dp"
+                android:layout_toLeftOf="@id/iv_back"/>
+
+        </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="1dp"
+        android:background="#9b9b9b"></View>
+    <RelativeLayout
+        android:id="@+id/rl_set2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:src="@mipmap/ac"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="昵称"
+            android:textSize="14dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_back1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/arrow_right_pink_n"/>
+        <TextView
+            android:id="@+id/tv_nick"
+            android:text="123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="14dp"
+            android:layout_toLeftOf="@id/iv_back1"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="1dp"
+        android:background="#9b9b9b"></View>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_set3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:src="@mipmap/ac"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="性别"
+            android:textSize="14dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_back2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/arrow_right_pink_n"/>
+        <TextView
+            android:id="@+id/tv_sex"
+            android:text="男"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="14dp"
+            android:layout_toLeftOf="@id/iv_back2"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="1dp"
+        android:background="#9b9b9b"></View>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_set4"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:src="@mipmap/ac"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:text="手机号"
+            android:textSize="14dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_back3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/arrow_right_pink_n"/>
+        <TextView
+            android:id="@+id/tv_phone"
+            android:text="13617005653"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="14dp"
+            android:layout_toLeftOf="@id/iv_back3"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="1dp"
+        android:background="#9b9b9b"></View>
+    <LinearLayout
+        android:id="@+id/rl_set5"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个性签名:"
+            android:layout_marginLeft="10dp"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_signal"
+            android:text="哎呦喂"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</LinearLayout>

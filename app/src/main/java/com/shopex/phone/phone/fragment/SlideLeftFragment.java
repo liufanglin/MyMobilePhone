@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.shopex.phone.phone.R;
+import com.shopex.phone.phone.activity.AccountPersonActivity;
 import com.shopex.phone.phone.activity.LoginActivity;
 import com.shopex.phone.phone.activity.SlideSettingsActivity;
 
@@ -26,7 +27,7 @@ public class SlideLeftFragment extends BaseFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_left, null);
         lv=(ListView) view.findViewById(R.id.listView1);
-        String[] strs={"登录","防盗说明","隐私保护","设置"};
+        String[] strs={"登录","防盗说明","个人中心","设置"};
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, strs);
         lv.setAdapter(adapter);
@@ -37,8 +38,12 @@ public class SlideLeftFragment extends BaseFragment{
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
 
+                }if(position==2){
+                    Intent intent =new Intent(getActivity(), AccountPersonActivity.class);
+                    startActivity(intent);
                 }
-                if (position == 2) {
+
+                if (position == 3) {
                     Intent intent =new Intent(getActivity(), SlideSettingsActivity.class);
                     startActivity(intent);
                 }

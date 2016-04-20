@@ -11,9 +11,23 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+
+
+    //自定义的签名配置
+    signingConfigs {
+        myConfig{
+            storeFile file("src/main/keystore/mysigned.jks")
+            storePassword "123456"
+            keyAlias "liufanglin"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            signingConfig signingConfigs.myConfig //使用自定义的签名配置
+            minifyEnabled true  //是否混淆打包
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

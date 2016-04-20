@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.common.BaseActivity;
+import com.shopex.phone.phone.library.CoreJob;
 import com.shopex.phone.phone.library.constants.AppConstants;
 
 public class SlideSettingsActivity extends BaseActivity {
@@ -44,8 +45,7 @@ public class SlideSettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(SlideSettingsActivity.this, ResetPwdActivity.class);
-                startActivity(intent);
+
             }
         });
         aboutLayout.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +58,7 @@ public class SlideSettingsActivity extends BaseActivity {
         msgLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SlideSettingsActivity.this,ResetPwdActivity.class);
-                startActivity(intent);
+
             }
         });
         
@@ -68,13 +67,8 @@ public class SlideSettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 //同步状态
-               finish();
-                AppConstants.name=null;
-                AppConstants.isLogin=false;
-                Intent intent=new Intent(SlideSettingsActivity.this,LoginActivity.class);
-                startActivity(intent);
-
-
+                finish();
+                CoreJob.exitApplication(true,SlideSettingsActivity.this);
             }
         });
 

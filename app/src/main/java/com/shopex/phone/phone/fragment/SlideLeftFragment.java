@@ -14,6 +14,7 @@ import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.activity.AccountPersonActivity;
 import com.shopex.phone.phone.activity.LoginActivity;
 import com.shopex.phone.phone.activity.SlideSettingsActivity;
+import com.shopex.phone.phone.activity.WebActivity;
 
 /**
  * Created by samsung on 2016/3/8.
@@ -38,13 +39,18 @@ public class SlideLeftFragment extends BaseFragment{
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
 
-                }if(position==2){
-                    Intent intent =new Intent(getActivity(), AccountPersonActivity.class);
+                }
+                if (position == 1) {
+                    Intent intent =new Intent(getActivity(), WebActivity.class);
+                    startActivity(intent);
+                }
+                if (position == 2) {
+                    Intent intent = new Intent(getActivity(), AccountPersonActivity.class);
                     startActivity(intent);
                 }
 
                 if (position == 3) {
-                    Intent intent =new Intent(getActivity(), SlideSettingsActivity.class);
+                    Intent intent = new Intent(getActivity(), SlideSettingsActivity.class);
                     startActivity(intent);
                 }
             }

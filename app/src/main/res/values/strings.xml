@@ -25,4 +25,8 @@
     <string name="search_now"> 查询  </string>
     <string name="every_apps_data">每个程序流量详情</string>
     <string name="show_now"> 当前流量 </string>
+
+    <string name="versiondetail">©2016 phone,Inc.All rights reserved</string>
+
+    <string name="sales">销售额：￥</string>
 </resources>

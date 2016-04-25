@@ -102,6 +102,10 @@
         <activity android:name=".activity.AnimalActivity">
         </activity>
 
+        <activity android:name=".activity.WebActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait"></activity>
 
 
         <!--流量统计-->

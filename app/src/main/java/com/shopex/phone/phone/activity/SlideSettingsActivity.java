@@ -51,7 +51,7 @@ public class SlideSettingsActivity extends BaseActivity {
         aboutLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SlideSettingsActivity.this,ResetPwdActivity.class);
+                Intent intent=new Intent(SlideSettingsActivity.this,AboutActivity.class);
                 startActivity(intent);
             }
         });

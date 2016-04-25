@@ -25,6 +25,7 @@ import com.shopex.phone.phone.activity.AllAppActivity;
 import com.shopex.phone.phone.activity.BackupsActivity;
 import com.shopex.phone.phone.activity.LostPhoneActivity;
 import com.shopex.phone.phone.activity.MemaryActivity;
+import com.shopex.phone.phone.activity.Showmain;
 import com.shopex.phone.phone.activity.TrafficActivity;
 import com.shopex.phone.phone.common.BaseActivity;
 import com.shopex.phone.phone.library.constants.AppConstants;
@@ -157,6 +158,12 @@ public class MainActivity extends BaseActivity {
                     }
                 }
 
+
+                //流量统计功能
+                if(position==1){
+                    Intent intent =new Intent(MainActivity.this,Showmain.class);
+                    startActivity(intent);
+                }
 
 
 

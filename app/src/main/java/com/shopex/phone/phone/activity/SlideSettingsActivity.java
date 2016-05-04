@@ -38,14 +38,11 @@ public class SlideSettingsActivity extends BaseActivity {
         aboutLayout= (LinearLayout) findViewById(R.id.about);
         msgLayout= (LinearLayout) findViewById(R.id.msg_notify);
         exitBtn= (Button) findViewById(R.id.exit);
-//        versionText= (TextView) findViewById(R.id.version);
-//        versionText.setText("版本号："+PackageUtils.getAppVersionName(this));
-
         resetLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                Intent intent =new Intent(SlideSettingsActivity.this,ResetPwdActivity.class);
+                startActivity(intent);
             }
         });
         aboutLayout.setOnClickListener(new View.OnClickListener() {

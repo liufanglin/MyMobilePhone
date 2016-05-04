@@ -106,12 +106,7 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
         content= (FrameLayout) findViewById(R.id.contentfragment);
         inflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         drawerView=inflater.inflate(R.layout.activity_main,null);
-        setLeftBackImageText("手机助手", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        setCenterTitle("手机助手");
         if (AppConstants.isLogin){
             setRightImage(R.mipmap.ccc, new View.OnClickListener() {
                 @Override
@@ -127,8 +122,6 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
                 }
             });
         }
-
-
         gridView= (GridView)drawerView.findViewById(R.id.gridview);
         mGridChart= (GridChart) drawerView.findViewById(R.id.mChart);
         mSelectText = (TextView) drawerView.findViewById(R.id.data);
@@ -151,17 +144,14 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
         drawerLayout.setDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
-
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
-
             }
 
             @Override
@@ -205,16 +195,9 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
                     Intent intent = new Intent(MainActivity.this, TrafficActivity.class);
                     startActivity(intent);
                 }
-               /* if (position == 2) {
-                    Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(MainActivity.this, InterceptionActivity.class);
-                    startActivity(intent);
-                }*/
+
                 //黑名单管理
                 if (position ==3){
-               /*     Intent intent =new Intent(MainActivity.this, MemaryActivity.class);
-                    startActivity(intent);*/
-
                     Intent intent =new Intent(MainActivity.this, AddBlankListActivity.class);
                     startActivity(intent);
                 }

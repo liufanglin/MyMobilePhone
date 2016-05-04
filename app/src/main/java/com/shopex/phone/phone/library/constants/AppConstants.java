@@ -23,12 +23,12 @@ public class AppConstants {
     public static final int [] GUIDE_PAGE_POTION=new int[]{
             R.mipmap.point_default,R.mipmap.poing_active};
     //首页gridview的文字和图片
-    public static final int[] MAIN_IMAGE=new int[]{R.mipmap.ck,R.mipmap.ck,R.mipmap.ck,R.mipmap.ck,
-            R.mipmap.ck,R.mipmap.ck};
+    public static final int[] MAIN_IMAGE=new int[]{R.mipmap.phone,R.mipmap.liuliang,R.mipmap.saorao,R.mipmap.addblank,
+            R.mipmap.ruanjian,R.mipmap.other};
     public static final String[] MAIN_TEXTTITLE=new String[]{"手机防盗","流量监控"
-    ,"骚扰拦截","支付保镖","软件管理","其他功能"};
+    ,"骚扰拦截","添加黑名单","软件管理","其他功能"};
     public static final String[] MAIN_TEXT=new String[]{
-            "剩余存储空间85%","看流量去哪了","骚扰拦截","获取10万赔付金","1款软件可以优化","三重引擎防护中"
+            "手机丢失后方便寻找","看流量去哪了","拦截短信电话","管理联系人","本机软件","常用功能"
     };
     //数据库的名字(联系人数据库)
     public static final String DB_NAME_CONTRACT = "contract.db";

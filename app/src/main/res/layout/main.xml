@@ -74,6 +74,10 @@
 	<TextView android:id="@+id/all_line_mid" android:layout_width="fill_parent"
 		android:layout_height="@dimen/line_height" android:layout_below="@+id/liuliang_total"
 		android:background="#00BFFF" />
+
+
+<!--
+
 	<TextView android:id="@+id/date_start" android:layout_width="@dimen/date_textview_width"
 		android:layout_height="@dimen/date_kongjian_height"
 		android:layout_below="@+id/all_line_mid" android:layout_marginTop="@dimen/margin_top_juli"
@@ -103,6 +107,63 @@
 			android:layout_width="wrap_content" android:textSize="@dimen/mid_text_size"
 			android:layout_weight="1" android:text="@string/search_now"></Button>
 	</LinearLayout>
+-->
+
+
+
+
+
+
+	<TextView
+		android:id="@+id/date_start"
+		android:visibility="gone"
+		android:layout_width="@dimen/date_textview_width"
+		android:layout_height="@dimen/date_kongjian_height"
+		android:layout_below="@+id/all_line_mid"
+		android:layout_marginTop="@dimen/margin_top_juli"
+		android:gravity="center"
+		android:layout_marginLeft="@dimen/margin_left"
+		android:textSize="@dimen/mid_text_size" />
+	<Button android:id="@+id/date_start_btn"
+		android:visibility="gone"
+		android:layout_height="@dimen/date_kongjian_height"
+		android:layout_width="@dimen/date_button_width"
+		android:layout_toRightOf="@+id/date_start"
+		android:layout_alignTop="@+id/date_start"
+		android:textSize="@dimen/mid_text_size"
+		android:text="@string/date_chose_start"></Button>
+	<TextView android:id="@+id/date_over" android:layout_width="@dimen/date_textview_width"
+		android:layout_height="@dimen/date_kongjian_height"
+		android:visibility="gone"
+		android:layout_below="@+id/date_start" android:layout_marginTop="@dimen/margin_top_juli"
+		android:gravity="center" android:layout_marginLeft="@dimen/margin_left"
+		android:textSize="@dimen/mid_text_size" />
+	<Button android:id="@+id/date_over_btn" android:layout_height="@dimen/date_kongjian_height"
+		android:layout_width="@dimen/date_button_width"
+		android:visibility="gone"
+		android:layout_toRightOf="@+id/date_start" android:layout_alignTop="@+id/date_over"
+		android:textSize="@dimen/mid_text_size" android:text="@string/date_chose_over"></Button>
+	<LinearLayout android:layout_height="wrap_content"
+		android:id="@+id/search_button1" android:layout_width="fill_parent"
+		android:layout_below="@+id/date_over">
+
+		<Button android:id="@+id/shownow_button" android:layout_height="@dimen/date_kongjian_height"
+			android:layout_width="wrap_content" android:textSize="@dimen/mid_text_size"
+			android:layout_weight="1" android:text="@string/show_now"></Button>
+		<Button android:id="@+id/search_button" android:layout_height="@dimen/date_kongjian_height"
+			android:layout_width="wrap_content" android:textSize="@dimen/mid_text_size"
+			android:visibility="gone"
+			android:layout_weight="1" android:text="@string/search_now"></Button>
+	</LinearLayout>
+
+
+
+
+
+
+
+
+
 	<TextView android:id="@+id/all_line_bottom"
 		android:layout_marginTop="@dimen/margin_top_juli"
 		android:layout_width="fill_parent" android:layout_height="@dimen/line_height"

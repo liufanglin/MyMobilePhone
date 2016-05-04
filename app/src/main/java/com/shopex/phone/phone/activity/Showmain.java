@@ -122,6 +122,10 @@ public class Showmain extends Activity {
 			}
 		});
 	}
+	//查询使用的流量
+
+
+
 
 	/**
 	 * 方法说明：两个日期之间进行搜索
@@ -311,6 +315,8 @@ public class Showmain extends Activity {
 		}
 	}
 
+
+	//计算所有的总流量
 	private void showdata() {
 		long grx = 0, gtx = 0, rx = 0, tx = 0;
 		Cursor rcursor = minsert.selectNow(RXG);

@@ -16,7 +16,7 @@ public class ChartData implements Serializable{
     }
 
     public  String getMyData(){
-        return day.substring(day.indexOf("-")+1,day.length());
+        return day;
     }
 
     @Override

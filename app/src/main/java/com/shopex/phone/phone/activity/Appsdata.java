@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.adapter.Adapterforimage;
+import com.shopex.phone.phone.library.view.ChartData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.List;
 
 public class Appsdata extends Activity {
 	private ListView showListview;
+
 
 	/*
 	 * (non-Javadoc)
@@ -67,4 +69,8 @@ public class Appsdata extends Activity {
 
 		showListview.setAdapter(adapter);
 	}
+
+
+
+
 }

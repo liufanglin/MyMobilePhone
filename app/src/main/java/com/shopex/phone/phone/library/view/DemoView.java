@@ -13,6 +13,7 @@ import android.graphics.drawable.shapes.RectShape;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewParent;
 
 /**
  * Created by samsung on 2016/3/24.
@@ -30,6 +31,14 @@ public class DemoView extends View {
 
     public DemoView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    //请求父view要不要拦截事件
+    private void requestParentIntertEvent(boolean isIntert){
+        ViewParent parent =getParent();
+        if (parent!=null){
+            parent.requestDisallowInterceptTouchEvent(isIntert);
+        }
     }
 
     @Override

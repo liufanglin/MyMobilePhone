@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.shopex.phone.phone.R;
-import com.shopex.phone.phone.pay.GridPasswordView;
+import com.shopex.phone.phone.library.pay.GridPasswordView;
 
 public class InputPayPasswordDialog extends Dialog {
 

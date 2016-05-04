@@ -361,7 +361,7 @@ public class GridChart extends View {
             mCanvas.drawCircle(adgeSpace + mCurrentNumber * mXSpace, mSelectPointHigh, BIG_CIRCLE_SIZE, paint);// 大圆
 
             try {
-                mOnclickListen.onClick(mPointData.get(mCurrentNumber).getMyData()  +"("+ TimeUtils.dayForWeek(mPointData.get(mCurrentNumber).day)+")"+ getResources().getString(R.string.sales) + StringUtils.addComma(mPointData.get(mCurrentNumber).sales));
+                mOnclickListen.onClick(mPointData.get(mCurrentNumber).getMyData()+ ":"+mPointData.get(mCurrentNumber).getMoney()+"KB");
             } catch (Exception e) {
                 e.printStackTrace();
             }

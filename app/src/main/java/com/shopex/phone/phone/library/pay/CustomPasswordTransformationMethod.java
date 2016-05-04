@@ -1,4 +1,4 @@
-package com.shopex.phone.phone.pay;
+package com.shopex.phone.phone.library.pay;
 
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;

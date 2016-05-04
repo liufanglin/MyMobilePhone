@@ -3,7 +3,8 @@
 	android:orientation="vertical" android:layout_width="match_parent"
 	android:layout_height="match_parent">
 	<LinearLayout android:orientation="horizontal"
-		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		android:gravity="center_vertical"
+		android:layout_width="wrap_content" android:layout_height="80dp">
 
 		<TextView android:id="@+id/apps_name_tv"
 			android:layout_height="@dimen/item_height" android:layout_width="110dp"

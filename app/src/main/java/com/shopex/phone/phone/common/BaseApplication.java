@@ -2,6 +2,7 @@ package com.shopex.phone.phone.common;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.WindowManager;
 
 
 import com.shopex.phone.phone.bean.UserInfo;
@@ -10,6 +11,7 @@ import com.shopex.phone.phone.db.DaoSession;
 import com.shopex.phone.phone.library.constants.AppConstants;
 import com.shopex.phone.phone.library.db.DaoHelp;
 import com.shopex.phone.phone.utils.MyDateBaseHelper;
+import com.shopex.phone.phone.utils.loghelp.LogUtil;
 
 
 /**
@@ -17,6 +19,7 @@ import com.shopex.phone.phone.utils.MyDateBaseHelper;
  * 全局配置信息类
  */
 public class BaseApplication extends Application{
+    private WindowManager.LayoutParams windowParams = new WindowManager.LayoutParams();
     private static BaseApplication instance=null;
     public static DaoMaster daoMaster=null;
     public static DaoSession daoSession=null;
@@ -36,6 +39,7 @@ public class BaseApplication extends Application{
     public static SQLiteDatabase usersDb=null;
 
 
+    public static LogUtil writeUtil;
 
     @Override
     public void onCreate() {
@@ -50,11 +54,17 @@ public class BaseApplication extends Application{
 
         initdb();
 
+        writeUtil=new LogUtil(getApplicationContext());
+        writeUtil.createView();
+
     }
     public static BaseApplication getInstance(){
         return instance;
     }
 
+    public WindowManager.LayoutParams getWindowParams() {
+        return windowParams;
+    }
     public static void initdb(){
         helper=new MyDateBaseHelper(instance, AppConstants.DB_NAME_CONTRACT,null,1);
         db=helper.getReadableDatabase();

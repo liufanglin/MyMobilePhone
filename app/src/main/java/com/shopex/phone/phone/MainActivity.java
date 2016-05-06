@@ -35,11 +35,14 @@ import com.shopex.phone.phone.activity.MemaryActivity;
 import com.shopex.phone.phone.activity.Showmain;
 import com.shopex.phone.phone.activity.TrafficActivity;
 import com.shopex.phone.phone.common.BaseActivity;
+import com.shopex.phone.phone.common.BaseApplication;
 import com.shopex.phone.phone.library.constants.AppConstants;
+import com.shopex.phone.phone.library.toolbox.LogUtils;
 import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
 import com.shopex.phone.phone.library.view.ChartData;
 import com.shopex.phone.phone.library.view.GridChart;
 import com.shopex.phone.phone.library.view.InputPayPasswordDialog;
+import com.shopex.phone.phone.utils.loghelp.LogUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -135,9 +138,6 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
         mGridChart.postInvalidate();
 
 
-
-
-
         content.addView(drawerView);
         //侧滑
         drawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -183,34 +183,41 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
                     } else {
                         openInputPayPasswordFrame();
                     }
+                    LogUtils.instance.i("----------22222222222");
                 }
                 //流量统计功能
                 if(position==1){
                     Intent intent =new Intent(MainActivity.this,Showmain.class);
                     startActivity(intent);
+
+                    LogUtils.instance.i("----------111111111111");
                 }
 
                 //骚扰拦截
                 if (position ==2) {
                     Intent intent = new Intent(MainActivity.this, TrafficActivity.class);
                     startActivity(intent);
+                    LogUtils.instance.i("----------3333333333");
                 }
 
                 //黑名单管理
                 if (position ==3){
                     Intent intent =new Intent(MainActivity.this, AddBlankListActivity.class);
                     startActivity(intent);
+                    LogUtils.instance.i("----------1444444444444");
                 }
                 //本机所有的app
                 if (position == 4) {
                     Intent intent = new Intent(MainActivity.this, AllAppActivity.class);
                     startActivity(intent);
+                    LogUtils.instance.i("----------155555555555551");
 
                 }
                 //备份
                 if(position==5){
                     Intent intent =new Intent(MainActivity.this, BackupsActivity.class);
                     startActivity(intent);
+                    LogUtils.instance.i("----------1666666666666666");
                 }
             }
         });

@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import com.shopex.phone.phone.MainActivity;
 import com.shopex.phone.phone.R;
+import com.shopex.phone.phone.common.BaseActivity;
+import com.shopex.phone.phone.common.BaseApplication;
 import com.shopex.phone.phone.common.RootActivity;
 import com.shopex.phone.phone.library.constants.AppConstants;
 import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
@@ -28,9 +30,11 @@ public class SplashActivity extends RootActivity{
                 if (PreferencesUtils.getBoolean(SplashActivity.this,ISFIRSTOPEN)){
                     Intent intent=new Intent(SplashActivity.this, LoginActivity.class);
                     startActivity(intent);
+                  //  getApplicationContext().startActivity(intent);
                     finish();
                 }else {
                     Intent intent=new Intent(SplashActivity.this,GuidePageActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 }

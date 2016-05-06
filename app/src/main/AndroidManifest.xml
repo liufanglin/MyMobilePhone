@@ -17,6 +17,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
     <application
         android:name=".common.BaseApplication"
         android:allowBackup="true"
@@ -113,6 +119,19 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.Showmain"
             android:screenOrientation="portrait"></activity>
+
+
+        <!--悬浮窗的-->
+        <activity android:name=".activity.FloatViewActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".activity.DialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"></activity>
+
+
 
         <receiver android:name=".receiver.MyReceiver">
             <intent-filter>

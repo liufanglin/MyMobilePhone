@@ -27,17 +27,18 @@ public class SplashActivity extends RootActivity{
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what==0){
-                if (PreferencesUtils.getBoolean(SplashActivity.this,ISFIRSTOPEN)){
-                    Intent intent=new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                  //  getApplicationContext().startActivity(intent);
-                    finish();
-                }else {
-                    Intent intent=new Intent(SplashActivity.this,GuidePageActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                }
+                Intent intent=new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                //  getApplicationContext().startActivity(intent);
+                finish();
+//                if (PreferencesUtils.getBoolean(SplashActivity.this,ISFIRSTOPEN)){
+//
+//                }else {
+//                    Intent intent=new Intent(SplashActivity.this,GuidePageActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    startActivity(intent);
+//                    finish();
+//                }
             }
 
         }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">手机助手</string>
+    <string name="app_name">app_help</string>
     <string name="btn_start">开始体验</string>
     <string name="localapp">本地应用</string>
     <string name="systemapp">系统应用</string>

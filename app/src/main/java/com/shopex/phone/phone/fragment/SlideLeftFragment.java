@@ -14,6 +14,7 @@ import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.activity.AccountPersonActivity;
 import com.shopex.phone.phone.activity.FeedListActivity;
 import com.shopex.phone.phone.activity.LoginActivity;
+import com.shopex.phone.phone.activity.MapActivity;
 import com.shopex.phone.phone.activity.SlideSettingsActivity;
 import com.shopex.phone.phone.activity.TuTbaleActivity;
 import com.shopex.phone.phone.activity.WebActivity;
@@ -46,6 +47,7 @@ public class SlideLeftFragment extends BaseFragment{
 
                 }
                 if (position == 2) {
+                    startActivity(new Intent(getContext(), MapActivity.class));
 
                 }
 

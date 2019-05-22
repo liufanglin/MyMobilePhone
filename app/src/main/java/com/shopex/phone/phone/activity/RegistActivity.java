@@ -51,7 +51,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_regist);
-        setLeftBackImageText("注册", new View.OnClickListener() {
+        setLeftBackImageText("register", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -130,11 +130,10 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         }
 
         if (TextUtils.isEmpty(phoneNumber)) {
-            T.showShort(RegistActivity.this, "请正确填写手机号");
+            T.showShort(RegistActivity.this, "account is null");
             mPhoneNumberText.requestFocus();
-        }  else if (TextUtils.isEmpty(password) || password.length() < 6
-                || password.length() > 20) {
-            T.showShort(RegistActivity.this,"密码不合法");
+        }  else if (TextUtils.isEmpty(password) ) {
+            T.showShort(RegistActivity.this,"password is null");
             mPasswdText.requestFocus();
         }else if (TextUtils.isEmpty(firstnames)){
             T.showShort(RegistActivity.this,"firstname is null");
@@ -163,7 +162,7 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         }else if (TextUtils.isEmpty(bir)){
             T.showShort(RegistActivity.this,"bir is null");
         } else {
-            T.showShort(RegistActivity.this, "注册成功");
+            T.showShort(RegistActivity.this, "success");
             BaseApplication.usersDb.execSQL("insert into user_info(name,pwd,firstname,lastname,bir,hight,weight,gender,address,leave) values(?,?,?,?,?,?,?,?,?,?)",
                     new Object[]{phoneNumber, password,firstnames,lastnames,bir,hights,weights,sex,et_addresss,et_leaves});
 

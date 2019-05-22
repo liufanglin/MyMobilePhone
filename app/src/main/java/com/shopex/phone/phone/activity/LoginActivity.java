@@ -73,13 +73,13 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-//                Intent w=new Intent(LoginActivity.this, MainActivity.class);
-//                startActivity(w);
+                Intent w=new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(w);
                 String accountStr = account.getText().toString();
                 String pwdStr = psw.getText().toString();
 
                 if (TextUtils.isEmpty(accountStr) || TextUtils.isEmpty(pwdStr)) {
-                    Toast.makeText(LoginActivity.this, "密码为空", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "password is null", Toast.LENGTH_LONG).show();
                 } else {
                     Cursor cursor= BaseApplication.usersDb.query(AppConstants.TABLE_USER,new String[]{"name","pwd"}, null, null, null, null, null) ;
                     while(cursor.moveToNext()){
@@ -87,7 +87,7 @@ public class LoginActivity extends BaseActivity {
                         String phone=cursor.getString(1);
                         if (name.equals(accountStr)){
                             if (phone.equals(pwdStr)){
-                                T.showShort(LoginActivity.this, "登录成功");
+                                T.showShort(LoginActivity.this, "success");
                                 PreferencesUtils.setString(LoginActivity.this, "loginname", accountStr);
                                 PreferencesUtils.setString(LoginActivity.this,"loginpwd",pwdStr);
                                 PreferencesUtils.setString(BaseApplication.getInstance(), "loginpwd", null);

@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
         content= (FrameLayout) findViewById(R.id.contentfragment);
         inflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         drawerView=inflater.inflate(R.layout.activity_main,null);
-        setCenterTitle("手机助手");
+        setCenterTitle("android");
         if (AppConstants.isLogin){
             setRightImage(R.mipmap.ccc, new View.OnClickListener() {
                 @Override

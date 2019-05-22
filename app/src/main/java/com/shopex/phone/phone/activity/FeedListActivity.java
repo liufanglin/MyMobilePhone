@@ -32,7 +32,7 @@ public class FeedListActivity extends BaseActivity {
     public List<String> leftList=new ArrayList<>();
     public FeedAdapter leftAdapter,rightAdapter;
     public List<String> rightList=new ArrayList<>();
-    public String selectType="饮料";
+    public String selectType="Drinks";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,15 +42,15 @@ public class FeedListActivity extends BaseActivity {
         recycleview2= (RecyclerView) findViewById(R.id.recycleview2);
         btn_add= (Button) findViewById(R.id.btn_add);
         et_food= (EditText) findViewById(R.id.et_food);
-        leftList.add("饮料");
-        leftList.add("膳食");
-        leftList.add("肉类");
-        leftList.add("零食");
-        leftList.add("面包");
-        leftList.add("蛋糕");
-        leftList.add("水果");
-        leftList.add("蔬菜");
-        leftList.add("其他");
+        leftList.add("Drinks");
+        leftList.add("Diet");
+        leftList.add("meat");
+        leftList.add("snacks");
+        leftList.add("Bread");
+        leftList.add("Cake");
+        leftList.add("Fruits");
+        leftList.add("Vegetables");
+        leftList.add("Other");
         leftAdapter=new FeedAdapter(FeedListActivity.this,leftList);
         recycleview1.setAdapter(leftAdapter);
         recycleview1.setLayoutManager(new LinearLayoutManager(FeedListActivity.this));

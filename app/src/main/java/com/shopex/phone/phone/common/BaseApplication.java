@@ -54,8 +54,8 @@ public class BaseApplication extends Application{
 
         initdb();
 
-        writeUtil=new LogUtil(getApplicationContext());
-        writeUtil.createView();
+//        writeUtil=new LogUtil(getApplicationContext());
+//        writeUtil.createView();
 
     }
     public static BaseApplication getInstance(){

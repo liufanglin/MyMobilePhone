@@ -1,5 +1,7 @@
 package com.shopex.phone.phone.activity;
 
+import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +30,8 @@ import com.shopex.phone.phone.library.toolbox.LogUtils;
 import com.shopex.phone.phone.library.toolbox.Run;
 import com.shopex.phone.phone.library.toolbox.T;
 
+import java.util.Calendar;
+import java.util.Locale;
 
 
 /**
@@ -34,22 +40,13 @@ import com.shopex.phone.phone.library.toolbox.T;
  */
 public class RegistActivity extends BaseActivity implements View.OnClickListener{
 
-    private Button mGetVerifyCodeButton,mNextButton;
-    private EditText mPhoneNumberText, mVerifyCodeText, mPasswdText;
+    private Button mNextButton;
+    private EditText mPhoneNumberText, mPasswdText,firstname,lastname,hight,weight,et_address,et_leave;
     private CheckBox mVisiblePasswordBox;
-    private Handler mhander =new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what==0){
-                mGetVerifyCodeButton.setText("重新获取");
-                mGetVerifyCodeButton.setEnabled(true);
-            }else {
-                mGetVerifyCodeButton.setEnabled(false);
-                mGetVerifyCodeButton.setText(String.format(getResources().getString(R.string.string_send_retry), msg.what));
-            }
-
-        }
-    };
+    private RadioButton radio1,radio2;
+    private TextView tv_birthday;
+    private String bir;
+    private String sex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,12 +63,23 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void init() {
         super.init();
-        mGetVerifyCodeButton = (Button) findViewById(R.id.account_regist_get_verify_code_button);//提交验证码
+        firstname = (EditText) findViewById(R.id.firstname);
+        lastname = (EditText) findViewById(R.id.lastname);
+        hight = (EditText) findViewById(R.id.hight);
+        weight = (EditText) findViewById(R.id.weight);
+        et_address = (EditText) findViewById(R.id.et_address);
+        et_leave = (EditText) findViewById(R.id.et_leave);
+
+        radio1= (RadioButton) findViewById(R.id.radio1);
+        radio2= (RadioButton) findViewById(R.id.radio2);
+
+        tv_birthday= (TextView) findViewById(R.id.tv_birthday);
+
+        tv_birthday.setOnClickListener(this);
+
         mNextButton = (Button) findViewById(R.id.account_regist_next_button);//注册
         mPhoneNumberText = (EditText) findViewById(R.id.account_regist_username);//输入注册名（手机号）
-        mVerifyCodeText = (EditText) findViewById(R.id.account_regist_verify_code);//输入验证码
         mPasswdText = (EditText) findViewById(R.id.account_regist_passwd);//密码
-        mGetVerifyCodeButton.setOnClickListener(this);
         mNextButton.setOnClickListener(this);
         mVisiblePasswordBox = (CheckBox)findViewById(R.id.account_register_password_visible);//选择是否可见
         mVisiblePasswordBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -93,51 +101,71 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if(v==mGetVerifyCodeButton){
-            String phoneNumber = mPhoneNumberText.getText().toString();
-            if (!TextUtils.isEmpty(phoneNumber) &&Run.isChinesePhoneNumber(phoneNumber)){
-                new Thread(new MyTime()).start();
 
-            }else {
-                Toast.makeText(RegistActivity.this,"请输入合法的手机号",Toast.LENGTH_LONG).show();
-            }
-
-        }
       if (v == mNextButton) {
             registAccount();
             // showSecondaryStepView();
         } else {
          //   super.onClick(v);
         }
+        if (v==tv_birthday){
+          showDatePickerDialog(RegistActivity.this,tv_birthday,Calendar.getInstance(Locale.CHINA));
+        }
     }
     // 注册用户
     private void registAccount() {
         String phoneNumber = mPhoneNumberText.getText().toString();
         String password = mPasswdText.getText().toString();
-        String verifyCode = mVerifyCodeText.getText().toString();
+        String firstnames=firstname.getText().toString();
+        String lastnames=lastname.getText().toString();
+        String hights=hight.getText().toString();
+        String weights=weight.getText().toString();
+        String et_addresss=et_address.getText().toString();
+        String et_leaves=et_leave.getText().toString();
+        String sex;
+        if (radio1.isChecked()){
+            sex="man";
+        }else {
+            sex="woman";
+        }
 
-        if (TextUtils.isEmpty(phoneNumber)
-                || !Run.isChinesePhoneNumber(phoneNumber)) {
+        if (TextUtils.isEmpty(phoneNumber)) {
             T.showShort(RegistActivity.this, "请正确填写手机号");
             mPhoneNumberText.requestFocus();
         }  else if (TextUtils.isEmpty(password) || password.length() < 6
                 || password.length() > 20) {
             T.showShort(RegistActivity.this,"密码不合法");
             mPasswdText.requestFocus();
-        }else {
+        }else if (TextUtils.isEmpty(firstnames)){
+            T.showShort(RegistActivity.this,"firstname is null");
+            firstname.requestFocus();
+
+        }else if (TextUtils.isEmpty(lastnames)){
+            T.showShort(RegistActivity.this,"firstname is null");
+            lastname.requestFocus();
+
+        }else if (TextUtils.isEmpty(hights)){
+            T.showShort(RegistActivity.this,"hight is null");
+            hight.requestFocus();
+
+        }else if (TextUtils.isEmpty(weights)){
+            T.showShort(RegistActivity.this,"weight is null");
+            weight.requestFocus();
+
+        }else if (TextUtils.isEmpty(et_addresss)){
+            T.showShort(RegistActivity.this,"address is null");
+            et_address.requestFocus();
+
+        }else if (TextUtils.isEmpty(et_leaves)){
+            T.showShort(RegistActivity.this,"leave is null");
+            et_leave.requestFocus();
+
+        }else if (TextUtils.isEmpty(bir)){
+            T.showShort(RegistActivity.this,"bir is null");
+        } else {
             T.showShort(RegistActivity.this, "注册成功");
-            BaseApplication.usersDb.execSQL("insert into user_info(name,pwd) values(?,?)",
-                    new Object[]{phoneNumber, password});
-     //       DbService.getInstance(RegistActivity.this).queryNote(ContactUserDao.Properties.Name.eq("13617005653"),)
-         /*  DbService.getInstance(RegistActivity.this).insert(new ContactUser(System.currentTimeMillis(), "18720984303", "123456"));
-
-           ContactUser logs=DbService.getInstance(RegistActivity.this).SelectNote("18720984303");
-            LogUtils.instance.i(logs.getPhone());
-
-            DbService.getInstance(RegistActivity.this).update(new ContactUser(logs.getId(), "18720984303", "654321"));
-
-            ContactUser lll=DbService.getInstance(RegistActivity.this).SelectNote("18720984303");
-            LogUtils.instance.i(lll.getPhone());*/
+            BaseApplication.usersDb.execSQL("insert into user_info(name,pwd,firstname,lastname,bir,hight,weight,gender,address,leave) values(?,?,?,?,?,?,?,?,?,?)",
+                    new Object[]{phoneNumber, password,firstnames,lastnames,bir,hights,weights,sex,et_addresss,et_leaves});
 
             Intent intent=new Intent(RegistActivity.this,LoginActivity.class);
             startActivity(intent);
@@ -145,28 +173,31 @@ public class RegistActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    public class MyTime implements Runnable{
 
-        @Override
-        public void run() {
-            int count=60;
-            while(count>=0){
-                try {
-                    mhander.sendEmptyMessage(count);
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+
+
+
+    public  void showDatePickerDialog(Activity activity, final TextView tv, Calendar calendar) {
+        // Calendar 需要这样来得到
+        // Calendar calendar = Calendar.getInstance();
+        // 直接创建一个DatePickerDialog对话框实例，并将它显示出来
+        new DatePickerDialog(activity,
+                // 绑定监听器(How the parent is notified that the date is set.)
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        // 此处得到选择的时间，可以进行你想要的操作
+                        tv.setText(  year + "-" + monthOfYear
+                                + "-" + dayOfMonth );
+                        bir= year + "-" + monthOfYear + "-" + dayOfMonth;
+                    }
                 }
-                count--;
-            }
-
-        }
+                // 设置初始日期
+                , calendar.get(Calendar.YEAR)
+                ,calendar.get(Calendar.MONTH)
+                ,calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8F9FB"
@@ -18,47 +18,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_enter_view" >
-            
-            <Button
-                android:id="@+id/account_regist_get_verify_code_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="75dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/bg_verify_code_red"
-                android:layout_centerVertical="true"
-                android:padding="10dp"
-                android:text="获取验证码"
-                android:textColor="#ffffff"
-                />
+
 
             <EditText
                 android:id="@+id/account_regist_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/account_regist_get_verify_code_button"
                 android:background="@null"
                 android:drawableLeft="@mipmap/login_user"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:hint="请输入手机号"
+                android:hint="email"
                 android:inputType="number"
                 android:padding="15dp"
                 android:singleLine="true"
                 android:textColor="#666666"
                 android:textSize="15dp" />
         </RelativeLayout>
-
-            <EditText
-                android:id="@+id/account_regist_verify_code"
-                style="@style/account_regist_edittext"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:background="@drawable/bg_enter_view"
-                android:drawableLeft="@mipmap/register_msg"
-                android:drawablePadding="10dp"
-                android:hint="请输入验证码" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -87,13 +63,138 @@
                 android:drawableLeft="@mipmap/login_password"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:hint="密码"
+                android:hint="password"
                 android:inputType="textPassword"
                 android:padding="15dp"
                 android:singleLine="true"
                 android:textColor="#666666"
                 android:textSize="15dp" />
         </RelativeLayout>
+
+
+        <EditText
+            android:id="@+id/firstname"
+            style="@style/account_regist_edittext"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:background="@drawable/bg_enter_view"
+            android:drawablePadding="10dp"
+            android:hint="firstname" />
+
+
+        <EditText
+            android:id="@+id/lastname"
+            style="@style/account_regist_edittext"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:background="@drawable/bg_enter_view"
+            android:drawablePadding="10dp"
+            android:hint="lastname" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="birthday:"/>
+
+            <TextView
+                android:id="@+id/tv_birthday"
+                style="@style/account_regist_edittext"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:background="@drawable/bg_enter_view"
+                android:drawablePadding="10dp"
+                android:hint="Birthday" />
+
+        </LinearLayout>
+
+
+
+
+        <EditText
+            android:id="@+id/hight"
+            style="@style/account_regist_edittext"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:background="@drawable/bg_enter_view"
+            android:drawablePadding="10dp"
+            android:hint="hight" />
+
+        <EditText
+            android:id="@+id/weight"
+            style="@style/account_regist_edittext"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:background="@drawable/bg_enter_view"
+            android:drawablePadding="10dp"
+            android:hint="weight" />
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="gender:"/>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="man"/>
+
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="woman"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_address"
+            style="@style/account_regist_edittext"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:background="@drawable/bg_enter_view"
+            android:drawablePadding="10dp"
+            android:hint="address" />
+
+
+        <EditText
+            android:id="@+id/et_leave"
+            style="@style/account_regist_edittext"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:padding="15dp"
+            android:background="@drawable/bg_enter_view"
+            android:drawablePadding="10dp"
+            android:hint="leave（1~5）" />
 
         <Button
             android:id="@+id/account_regist_next_button"
@@ -109,102 +210,5 @@
 
     </LinearLayout>
     
-  <!--  <LinearLayout
-        android:id="@+id/account_regist_step2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="10dp"
-        android:visibility="gone" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="注册成功"
-            android:textColor="#666666"
-            android:textSize="15dp" />
-
-        <EditText
-            android:id="@+id/account_regist_uname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/account_login_name_bgimage"
-            android:gravity="center_vertical"
-            android:hint="用户名"
-            android:singleLine="true"
-            android:textColor="@color/account_login_primary_textcolor"
-            android:textSize="@dimen/TextSizeMedium" />
-
-        <EditText
-            android:id="@+id/account_regist_passwd2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/account_regist_passwd_input_bgimage"
-            android:gravity="center_vertical"
-            android:hint="@string/account_regist_passwd_hint"
-            android:singleLine="true"
-            android:textColor="@color/account_login_primary_textcolor"
-            android:textSize="@dimen/TextSizeMedium" />
-
-        <EditText
-            android:id="@+id/account_regist_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/account_regist_email_input_bgimage"
-            android:gravity="center_vertical"
-            android:hint="@string/account_regist_email"
-            android:singleLine="true"
-            android:textColor="@color/account_login_primary_textcolor"
-            android:textSize="@dimen/TextSizeMedium" />
-
-        <Button
-            android:id="@+id/account_regist_submit_button"
-            style="@style/button_pink"
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:layout_marginTop="@dimen/PaddingXXLarge"
-            android:text="@string/complete" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/account_regist_step0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/PaddingLarge"
-        android:visibility="gone" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/PaddingMedium"
-            android:paddingTop="@dimen/PaddingMedium"
-            android:text="@string/account_regist_offline_member"
-            android:textColor="@color/westore_dark_textcolor"
-            android:textSize="@dimen/TextSizeMedium" />
-
-        <EditText
-            android:id="@+id/account_regist_offline_passwd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/account_login_input_text"
-            android:gravity="center_vertical"
-            android:hint="@string/account_regist_passwd_hint"
-            android:paddingLeft="@dimen/PaddingLarge"
-            android:paddingRight="@dimen/PaddingLarge"
-            android:singleLine="true"
-            android:textColor="@color/account_login_primary_textcolor"
-            android:textSize="@dimen/TextSizeMedium" />
-
-        <Button
-            android:id="@+id/account_regist_offline_submit"
-            style="@style/button_pink"
-            android:layout_width="match_parent"
-            android:layout_height="40dip"
-            android:layout_marginTop="@dimen/PaddingXXLarge"
-            android:text="@string/account_login_submit" />
-    </LinearLayout>
--->
-</RelativeLayout>
+</ScrollView>

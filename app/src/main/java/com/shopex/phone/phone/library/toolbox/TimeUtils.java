@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * TimeUtils
@@ -14,7 +15,10 @@ public class TimeUtils {
 
     public static final SimpleDateFormat DEFAULT_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     public static final SimpleDateFormat DATE_FORMAT_DATE    = new SimpleDateFormat("yyyy-MM-dd");
-//    public static final SimpleDateFormat DATE_FORMAT_YEAR   = new SimpleDateFormat("yyyy年MM月dd号");
+    public static String dateFormatYMD = "yyyy-MM-dd";
+    public static String dateFormatHMS = "HH:mm:ss";
+
+    //    public static final SimpleDateFormat DATE_FORMAT_YEAR   = new SimpleDateFormat("yyyy年MM月dd号");
     private TimeUtils() {
         throw new AssertionError();
     }
@@ -73,6 +77,36 @@ public class TimeUtils {
         long longDate = date.getTime();
         return  longDate;
     }
+
+
+
+    //获取当前系统当天日期
+    public static String getCurrentDay() {
+        String curDateTime = null;
+        try {
+            SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(dateFormatYMD );
+            Calendar c = new GregorianCalendar();
+            c.add(Calendar.DAY_OF_MONTH, 0);
+            curDateTime = mSimpleDateFormat.format(c.getTime());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return curDateTime;
+    }
+    //获取当前系统当天日期
+    public static String getCurrentTime() {
+        String curDateTime = null;
+        try {
+            SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(dateFormatHMS );
+            Calendar c = new GregorianCalendar();
+            c.add(Calendar.DAY_OF_MONTH, 0);
+            curDateTime = mSimpleDateFormat.format(c.getTime());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return curDateTime;
+    }
+
     public static String formatTimeInString(long millis) {
         
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");

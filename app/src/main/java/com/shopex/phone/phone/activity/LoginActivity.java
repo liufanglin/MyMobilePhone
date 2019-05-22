@@ -73,6 +73,8 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
+                Intent w=new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(w);
                 String accountStr = account.getText().toString();
                 String pwdStr = psw.getText().toString();
 

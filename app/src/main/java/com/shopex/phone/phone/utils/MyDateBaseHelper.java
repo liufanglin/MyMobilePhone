@@ -22,12 +22,18 @@ public class MyDateBaseHelper extends SQLiteOpenHelper{
     private String smssql="create table sms_info(_id integer primary key autoincrement,name,phone,content,time,type)";
     //用户表
     private String usersql="create table user_info(_id integer primary key autoincrement,name,pwd,firstname,lastname,bir,hight,weight,gender,address,leave)";
+
+//    private String kaluli="create table kalu_info(_id integer primary key autoincrement,day,time,num)";
+
+
     //构造器创建数据
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(sql);
         db.execSQL(smssql);
         db.execSQL(usersql);
+//        db.execSQL(kaluli);
+
     }
 
     @Override

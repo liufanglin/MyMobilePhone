@@ -12,8 +12,10 @@ import android.widget.ListView;
 
 import com.shopex.phone.phone.R;
 import com.shopex.phone.phone.activity.AccountPersonActivity;
+import com.shopex.phone.phone.activity.FeedListActivity;
 import com.shopex.phone.phone.activity.LoginActivity;
 import com.shopex.phone.phone.activity.SlideSettingsActivity;
+import com.shopex.phone.phone.activity.TuTbaleActivity;
 import com.shopex.phone.phone.activity.WebActivity;
 
 /**
@@ -28,7 +30,7 @@ public class SlideLeftFragment extends BaseFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_left, null);
         lv=(ListView) view.findViewById(R.id.listView1);
-        String[] strs={"登录","防盗说明","个人中心","设置"};
+        String[] strs={"FEED","STEP","MAP"};
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1, strs);
         lv.setAdapter(adapter);
@@ -36,23 +38,18 @@ public class SlideLeftFragment extends BaseFragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(getContext(), FeedListActivity.class));
 
                 }
                 if (position == 1) {
-                    Intent intent =new Intent(getActivity(), WebActivity.class);
-                    startActivity(intent);
+                    startActivity(new Intent(getContext(), TuTbaleActivity.class));
+
                 }
                 if (position == 2) {
-                    Intent intent = new Intent(getActivity(), AccountPersonActivity.class);
-                    startActivity(intent);
+
                 }
 
-                if (position == 3) {
-                    Intent intent = new Intent(getActivity(), SlideSettingsActivity.class);
-                    startActivity(intent);
-                }
+
             }
         });
 

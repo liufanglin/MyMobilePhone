@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridView;
@@ -39,10 +40,15 @@ import com.shopex.phone.phone.common.BaseApplication;
 import com.shopex.phone.phone.library.constants.AppConstants;
 import com.shopex.phone.phone.library.toolbox.LogUtils;
 import com.shopex.phone.phone.library.toolbox.PreferencesUtils;
+import com.shopex.phone.phone.library.toolbox.TimeUtils;
 import com.shopex.phone.phone.library.view.ChartData;
 import com.shopex.phone.phone.library.view.GridChart;
 import com.shopex.phone.phone.library.view.InputPayPasswordDialog;
 import com.shopex.phone.phone.utils.loghelp.LogUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,52 +57,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends BaseActivity  implements GridChart.OnClickListen{
-    private GridView gridView;
-    private EditText putInPwdEdit;
+
     private DrawerLayout drawerLayout;
     private LayoutInflater inflater=null;
     private View drawerView;
     private FrameLayout content;
-    private GridChart mGridChart;
-    private TextView mSelectText;
-    private List<String> dateList;
-    private List<ChartData> mDataList=new ArrayList<>();
-    public void addData(){
-        mDataList= getAppLiuLiang();
-    }
+    private TextView tv_name,tv_kaluli;
+    private EditText et_kaluli;
+    private Button btn_setting,btn_edit;
 
-    public List<ChartData> getAppLiuLiang(){
-        List<ChartData> list =new ArrayList<>();
-        PackageManager pckMan = getPackageManager();
-        List<PackageInfo> packs = pckMan.getInstalledPackages(0);
-        ArrayList<HashMap<String, Object>> item = new ArrayList<HashMap<String, Object>>();
-        for (PackageInfo p : packs) {
-            if ((p.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0
-                    && (p.applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) == 0) {
-                int appid = p.applicationInfo.uid;
-                long rxdata = TrafficStats.getUidRxBytes(appid);
-                rxdata = rxdata / 1024;
-                long txdata = TrafficStats.getUidTxBytes(appid);
-                txdata = txdata / 1024;
-                long data_total = rxdata + txdata;
-                ChartData date=new ChartData();
-                date.day=p.applicationInfo.loadLabel(getPackageManager()).toString();
-                date.sales=data_total+"";
-                list.add(date);
-            }
-        }
-        return list;
-    }
 
-    private Handler handler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what==1001){
-                openInputPayPasswordFrame();
-            }
-        }
-    };
+
+
 
 
 
@@ -104,8 +76,6 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slide);
-        dateList=getSevenDay();
-        addData();
         content= (FrameLayout) findViewById(R.id.contentfragment);
         inflater= (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         drawerView=inflater.inflate(R.layout.activity_main,null);
@@ -125,18 +95,37 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
                 }
             });
         }
-        gridView= (GridView)drawerView.findViewById(R.id.gridview);
-        mGridChart= (GridChart) drawerView.findViewById(R.id.mChart);
-        mSelectText = (TextView) drawerView.findViewById(R.id.data);
-        mGridChart.setLongitudeNumber(mDataList.size());
-        mGridChart.setmViewTag("App消耗流量统计");
-        mGridChart.setmPointData(mDataList);
-        if(mDataList.size()>0)
-            mGridChart.setmCurrentNumberAndTouch(mDataList.size()-1,false);
+//        private TextView tv_name,tv_kaluli;
+//        private EditText et_kaluli;
+//        private Button btn_setting;
+        tv_name= (TextView) drawerView.findViewById(R.id.tv_name);
+        tv_kaluli= (TextView) drawerView.findViewById(R.id.tv_kaluli);
+        et_kaluli= (EditText) drawerView.findViewById(R.id.et_kaluli);
+        btn_setting= (Button) drawerView.findViewById(R.id.btn_setting);
+        btn_edit= (Button) drawerView.findViewById(R.id.btn_edit);
 
-        mGridChart.setmOnclickListen(this);
-        mGridChart.postInvalidate();
+        tv_name.setText(AppConstants.name);
+        setNum();
 
+
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et_kaluli.setVisibility(View.VISIBLE);
+                tv_kaluli.setVisibility(View.GONE);
+
+            }
+        });
+
+        btn_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (et_kaluli.getText().toString()!=null) {
+                    PreferencesUtils.setString(MainActivity.this,TimeUtils.getCurrentDay(),ObjectTOjson(TimeUtils.getCurrentTime(), et_kaluli.getText().toString()));
+                    setNum();
+                }
+            }
+        });
 
         content.addView(drawerView);
         //侧滑
@@ -169,145 +158,84 @@ public class MainActivity extends BaseActivity  implements GridChart.OnClickList
                 }
             }
         });
-     //   mDrawerToggle=new ActionBarDrawerToggle(this,mDrawerToggle,);
-        gridView.setAdapter(new MyBaseAdapter());
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //手机防盗功能
-                if (position == 0) {
-                    if (PreferencesUtils.getString(MainActivity.this, "phonepwd", null) == null) {
-                        Intent intent = new Intent(MainActivity.this, LostPhoneActivity.class);
-                        startActivity(intent);
-                    } else {
-                        openInputPayPasswordFrame();
-                    }
-                    LogUtils.instance.i("----------22222222222");
-                }
-                //流量统计功能
-                if(position==1){
-                    Intent intent =new Intent(MainActivity.this,Showmain.class);
-                    startActivity(intent);
-
-                    LogUtils.instance.i("----------111111111111");
-                }
-
-                //骚扰拦截
-                if (position ==2) {
-                    Intent intent = new Intent(MainActivity.this, TrafficActivity.class);
-                    startActivity(intent);
-                    LogUtils.instance.i("----------3333333333");
-                }
-
-                //黑名单管理
-                if (position ==3){
-                    Intent intent =new Intent(MainActivity.this, AddBlankListActivity.class);
-                    startActivity(intent);
-                    LogUtils.instance.i("----------1444444444444");
-                }
-                //本机所有的app
-                if (position == 4) {
-                    Intent intent = new Intent(MainActivity.this, AllAppActivity.class);
-                    startActivity(intent);
-                    LogUtils.instance.i("----------155555555555551");
-
-                }
-                //备份
-                if(position==5){
-                    Intent intent =new Intent(MainActivity.this, BackupsActivity.class);
-                    startActivity(intent);
-                    LogUtils.instance.i("----------1666666666666666");
-                }
-            }
-        });
 
     }
 
     @Override
     public void onClick(String date) {
-            mSelectText.setText(date);
 
     }
 
-    public class MyBaseAdapter extends BaseAdapter{
-        private LayoutInflater inflater;
-        public MyBaseAdapter(){
-            inflater= (LayoutInflater) MainActivity.this.getSystemService(MainActivity.this.LAYOUT_INFLATER_SERVICE);
-        }
-
-        @Override
-        public int getCount() {
-            return AppConstants.MAIN_IMAGE.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return AppConstants.MAIN_TEXT[position];
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View view;
-            if (convertView==null){
-                view=inflater.inflate(R.layout.activity_gridview_item,null);
-            }else {
-                view=convertView;
+    public void setNum(){
+        JSONArray localarray=getArray(MainActivity.this, TimeUtils.getCurrentDay());
+        if (localarray!=null&&localarray.length()>0){
+            try {
+                JSONObject jsonObject=localarray.optJSONObject(localarray.length()-1);
+                String num=jsonObject.optString("num");
+                tv_kaluli.setText(num);
+                tv_kaluli.setVisibility(View.VISIBLE);
+                btn_edit.setVisibility(View.VISIBLE);
+                et_kaluli.setVisibility(View.GONE);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            ImageView imageView= (ImageView) view.findViewById(R.id.iv_show);
-            imageView.setImageResource(AppConstants.MAIN_IMAGE[position]);
-            TextView textViewTitle= (TextView) view.findViewById(R.id.tv_title);
-            textViewTitle.setText(AppConstants.MAIN_TEXTTITLE[position]);
-            TextView textView= (TextView) view.findViewById(R.id.tv_sizetitle);
-            textView.setText(AppConstants.MAIN_TEXT[position]);
-            return view;
+        }else {
+            //无数据显示设置
+            tv_kaluli.setVisibility(View.GONE);
+            et_kaluli.setVisibility(View.VISIBLE);
+            btn_edit.setVisibility(View.GONE);
+
         }
     }
 
 
-    // 打开输入支付密码界面
-    private void openInputPayPasswordFrame() {
-        InputPayPasswordDialog.openDialog(MainActivity.this, new InputPayPasswordDialog.OnPayPasswordListener() {
+    /**
+     * 把要保存的数据转成json 形式
+     * */
+    public String ObjectTOjson(String time,String num){
+        //先读出来 在存进去
+        JSONArray jsonArray=new JSONArray();
+        JSONArray localarray=getArray(MainActivity.this, TimeUtils.getCurrentDay());
+        if (localarray!=null){
+            for (int i=0;i<localarray.length();i++){
+                jsonArray.put(localarray.optJSONObject(i));
 
-            @Override
-            public void onResult(String payPassword) {
-                // 验证支付密码是否正确
+            }
+        }
+        JSONObject jsonObject=new JSONObject();
 
-                if (TextUtils.isEmpty(payPassword)){
-                    Toast.makeText(MainActivity.this,"请输入密码",3000).show();
-                }else if(payPassword.equals(PreferencesUtils.getString(MainActivity.this,"phonepwd").trim())){
-                    Intent intent = new Intent(MainActivity.this, LostPhoneActivity.class);
-                    startActivity(intent);
-                }else {
-                    handler.sendEmptyMessageDelayed(1001,1000);
-                    Toast.makeText(MainActivity.this,"验证密码输入错误，请重新输入",3000).show();
+        try {
+            jsonObject.put("num",num);
+            jsonObject.put("time",time);
+            jsonArray.put(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonArray.toString();
+    }
+
+
+
+    public JSONArray getArray(Context context,String day){
+        String array= PreferencesUtils.getString(context,day);
+        try {
+            if (!TextUtils.isEmpty(array)){
+                JSONArray jsonArray=new JSONArray(array);
+                if (jsonArray.length()>0){
+
+                    return jsonArray;
                 }
-
+                return null;
             }
-            @Override
-            public double onPaymentAmount() {
-               return  0.00;
-            }
-        });
-    }
 
-
-    //获取最近七天日期
-    public List<String> getSevenDay(){
-        List<String> list=new ArrayList<>();
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("MM-dd");
-        for (int i=6;i>=0;i--){
-            long time=System.currentTimeMillis()-i*24*3600*1000;
-            String day=simpleDateFormat.format(new Date(time));
-            list.add(day);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        return list;
+        return null;
     }
+
+
 
 
 

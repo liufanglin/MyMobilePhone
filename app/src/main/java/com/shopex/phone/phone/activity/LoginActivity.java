@@ -41,12 +41,12 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        setLeftBackImageText("登录", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        setLeftBackImageText("登录", new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
         ProgressBar progressBar=new ProgressBar(this);
         progressBar.setVisibility(View.VISIBLE);
         initView();
@@ -73,8 +73,8 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                Intent w=new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(w);
+//                Intent w=new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(w);
                 String accountStr = account.getText().toString();
                 String pwdStr = psw.getText().toString();
 
